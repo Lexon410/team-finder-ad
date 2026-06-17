@@ -1,0 +1,31 @@
+# Поля пользователя
+MAX_NAME_LENGTH = 124
+MAX_SURNAME_LENGTH = 124
+MAX_PHONE_LENGTH = 15
+MAX_ABOUT_LENGTH = 256
+
+# Поля проекта
+MAX_PROJECT_NAME_LENGTH = 200
+MAX_STATUS_LENGTH = 6
+MAX_SKILL_NAME_LENGTH = 124
+
+# Статусы
+STATUS_OPEN = 'open'
+STATUS_CLOSED = 'closed'
+STATUS_CHOICES = [
+    (STATUS_OPEN, 'Открыт'),
+    (STATUS_CLOSED, 'Закрыт'),
+]
+
+# Пагинация
+PAGE_SIZE = 12
+
+# Аватарка
+AVATAR_SIZE = 200
+AVATAR_FONT_SIZE = 120
+
+# Цвета для аватарки
+AVATAR_COLORS = [
+    '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7',
+    '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E9'
+]

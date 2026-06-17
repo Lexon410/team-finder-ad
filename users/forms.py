@@ -1,11 +1,9 @@
 import re
-
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-
 from .models import User
-
+from utils.validators import validate_github_url
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -21,10 +19,8 @@ class RegistrationForm(forms.ModelForm):
             user.save()
         return user
 
-
 class LoginForm(AuthenticationForm):
     username = forms.EmailField(label='Email')
-
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:
@@ -48,7 +44,4 @@ class ProfileEditForm(forms.ModelForm):
         return phone
 
     def clean_github_url(self):
-        url = self.cleaned_data.get('github_url')
-        if url and 'github.com' not in url:
-            raise ValidationError('Ссылка должна вести на GitHub')
-        return url
+        return validate_github_url(self.cleaned_data.get('github_url'))
