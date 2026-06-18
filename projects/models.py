@@ -1,5 +1,3 @@
-from django.db import models
-from django.conf import settings
 from constants import (
     MAX_PROJECT_NAME_LENGTH,
     MAX_STATUS_LENGTH,
@@ -7,6 +5,9 @@ from constants import (
     STATUS_CHOICES,
     STATUS_OPEN,
 )
+from django.conf import settings
+from django.db import models
+
 
 class Skill(models.Model):
     name = models.CharField(max_length=MAX_SKILL_NAME_LENGTH, unique=True, verbose_name='Название')
@@ -18,6 +19,7 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Project(models.Model):
     name = models.CharField(max_length=MAX_PROJECT_NAME_LENGTH, verbose_name='Название проекта')

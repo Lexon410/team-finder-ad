@@ -1,7 +1,9 @@
-from django import forms
-from .models import Project
 from constants import STATUS_CHOICES
+from django import forms
 from utils.validators import validate_github_url
+
+from .models import Project
+
 
 class ProjectForm(forms.ModelForm):
     class Meta:
@@ -10,6 +12,7 @@ class ProjectForm(forms.ModelForm):
 
     def clean_github_url(self):
         return validate_github_url(self.cleaned_data.get('github_url'))
+
 
 class ProjectEditForm(ProjectForm):
     class Meta(ProjectForm.Meta):

@@ -1,9 +1,12 @@
 import re
+
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-from .models import User
 from utils.validators import validate_github_url
+
+from .models import User
+
 
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -19,8 +22,10 @@ class RegistrationForm(forms.ModelForm):
             user.save()
         return user
 
+
 class LoginForm(AuthenticationForm):
     username = forms.EmailField(label='Email')
+
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:

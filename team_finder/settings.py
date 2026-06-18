@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from decouple import config
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -47,6 +48,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "team_finder.wsgi.application"
 
+# # PostgreSQL — по ТЗ
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": config("POSTGRES_DB", default="teamfinder"),
+#         "USER": config("POSTGRES_USER", default="postgres"),
+#         "PASSWORD": config("POSTGRES_PASSWORD", default="postgres"),
+#         "HOST": config("POSTGRES_HOST", default="localhost"),
+#         "PORT": config("POSTGRES_PORT", default=5432, cast=int),
+#     }
+# }
+
+# Временная SQLite
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -54,7 +68,7 @@ DATABASES = {
     }
 }
 
-AUTH_PASSWORD_VALIDATORS = []
+AUTH_PASSWORD_VALIDATORS = []  # для разработки
 LANGUAGE_CODE = "ru-ru"
 TIME_ZONE = "UTC"
 USE_I18N = True
