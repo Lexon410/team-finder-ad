@@ -49,26 +49,26 @@ TEMPLATES = [
 WSGI_APPLICATION = "team_finder.wsgi.application"
 
 # # PostgreSQL — по ТЗ
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": config("POSTGRES_DB", default="teamfinder"),
-#         "USER": config("POSTGRES_USER", default="postgres"),
-#         "PASSWORD": config("POSTGRES_PASSWORD", default="postgres"),
-#         "HOST": config("POSTGRES_HOST", default="localhost"),
-#         "PORT": config("POSTGRES_PORT", default=5432, cast=int),
-#     }
-# }
-
-# Временная SQLite
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": config("POSTGRES_DB", default="teamfinder"),
+        "USER": config("POSTGRES_USER", default="postgres"),
+        "PASSWORD": config("POSTGRES_PASSWORD", default="postgres"),
+        "HOST": config("POSTGRES_HOST", default="localhost"),
+        "PORT": config("POSTGRES_PORT", default=5432, cast=int),
     }
 }
 
-AUTH_PASSWORD_VALIDATORS = []  # для разработки
+# # # SQLite (временно)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+AUTH_PASSWORD_VALIDATORS = []
 LANGUAGE_CODE = "ru-ru"
 TIME_ZONE = "UTC"
 USE_I18N = True

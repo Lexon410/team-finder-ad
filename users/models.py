@@ -2,13 +2,14 @@ import random
 from io import BytesIO
 
 from PIL import Image, ImageDraw, ImageFont
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.core.files.base import ContentFile
+from django.db import models
+
 from constants import (
     MAX_NAME_LENGTH, MAX_SURNAME_LENGTH, MAX_PHONE_LENGTH, MAX_ABOUT_LENGTH,
     AVATAR_SIZE, AVATAR_FONT_SIZE, AVATAR_COLORS
 )
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-from django.core.files.base import ContentFile
-from django.db import models
 
 
 class UserManager(BaseUserManager):

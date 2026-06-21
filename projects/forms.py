@@ -1,7 +1,7 @@
-from constants import STATUS_CHOICES
 from django import forms
-from utils.validators import validate_github_url
 
+from constants import STATUS_CHOICES
+from utils.validators import validate_github_url
 from .models import Project
 
 

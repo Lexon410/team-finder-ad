@@ -1,16 +1,23 @@
+from django.conf import settings
+from django.db import models
+
 from constants import (
     MAX_PROJECT_NAME_LENGTH,
-    MAX_STATUS_LENGTH,
     MAX_SKILL_NAME_LENGTH,
     STATUS_CHOICES,
     STATUS_OPEN,
 )
-from django.conf import settings
-from django.db import models
+
+# Вычисляем максимальную длину статуса автоматически
+STATUS_MAX_LENGTH = max(len(status[0]) for status in STATUS_CHOICES)
 
 
 class Skill(models.Model):
-    name = models.CharField(max_length=MAX_SKILL_NAME_LENGTH, unique=True, verbose_name='Название')
+    name = models.CharField(
+        max_length=MAX_SKILL_NAME_LENGTH,
+        unique=True,
+        verbose_name='Название'
+    )
 
     class Meta:
         ordering = ['name']
@@ -22,7 +29,10 @@ class Skill(models.Model):
 
 
 class Project(models.Model):
-    name = models.CharField(max_length=MAX_PROJECT_NAME_LENGTH, verbose_name='Название проекта')
+    name = models.CharField(
+        max_length=MAX_PROJECT_NAME_LENGTH,
+        verbose_name='Название проекта'
+    )
     description = models.TextField(blank=True, verbose_name='Описание')
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -33,7 +43,7 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     github_url = models.URLField(blank=True, verbose_name='Ссылка на GitHub')
     status = models.CharField(
-        max_length=MAX_STATUS_LENGTH,
+        max_length=STATUS_MAX_LENGTH,
         choices=STATUS_CHOICES,
         default=STATUS_OPEN,
         verbose_name='Статус'

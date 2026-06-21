@@ -1,6 +1,5 @@
 import json
 
-from constants import STATUS_CLOSED, STATUS_OPEN
 from django.contrib.auth.decorators import login_required
 from django.http import (
     JsonResponse, HttpResponseForbidden,
@@ -8,8 +7,9 @@ from django.http import (
 )
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_http_methods
-from utils.pagination import paginate_queryset
 
+from constants import STATUS_CLOSED, STATUS_OPEN
+from utils.pagination import paginate_queryset
 from .forms import ProjectForm, ProjectEditForm
 from .models import Project, Skill
 

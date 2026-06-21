@@ -3,8 +3,8 @@ import re
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
-from utils.validators import validate_github_url
 
+from utils.validators import validate_github_url
 from .models import User
 
 
