@@ -17,6 +17,3 @@ class ProjectForm(forms.ModelForm):
 class ProjectEditForm(ProjectForm):
     class Meta(ProjectForm.Meta):
         fields = ProjectForm.Meta.fields + ['status']
-        widgets = {
-            'status': forms.Select(choices=STATUS_CHOICES),
-        }
